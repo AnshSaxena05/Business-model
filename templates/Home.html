@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        section {
+            max-width: 90%;
+            margin-left: 5%;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .details {
+            margin-top: 1em;
+            padding: 1em;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            
+        }
+
+
+        .details h2{
+            font-size: 1em;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Business Model</h1>
+    </header>
+
+    <section>
+        <form method="post" action="/">
+            <label for="category">Choose a category:</label>
+            <select id="category" name="category">
+                {% for category in categories %}
+                    <option value="{{ category }}" {% if selected_category == category %}selected{% endif %}>{{ category }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Show Details">
+        </form>
+
+        {% if selected_category %}
+            <div class="details">
+                <h2>Details for {{ selected_category }}</h2>
+                {% if category_details %}
+                    <ul>
+                        {% for key, value in category_details.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No details found for {{ selected_category }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="chart">
+            <img src="D:\study\DSA self\Internship\img.jpg" alt="Chart Image">
+        </div>
+
+        <h2>Welcome to our Business Model Page!</h2>
+        <p>Discount VS Review.</p>
+        <p>This model finds the minimum Discount for maximum review</p>
+    </section>
+
+</body>
+</html>
